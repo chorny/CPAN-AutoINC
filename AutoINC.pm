@@ -21,7 +21,7 @@ sub CPAN::AutoINC::INC {
 	my $module = $1;
 	$module =~ s!/!::!g;
 
-	foreach my $m (expand("Module", $module)) {
+	foreach my $m (CPAN::Shell->expand("Module", $module)) {
 	    CPAN::Shell->install($m);
 
 	    foreach my $prefix (@INC) {
